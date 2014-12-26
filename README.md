@@ -1,4 +1,4 @@
-TaxCalculator.EntityFramework
+TaxCalculator
 =============================
 
-TaxCalculator.EntityFramework
+TaxCalculator
