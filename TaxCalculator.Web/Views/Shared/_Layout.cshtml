@@ -1,0 +1,88 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Tax Calculator</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand">
+                    <a href="@Url.Action("Index", "Home")">
+                        <i class="fa fa-coffee fa-lg"></i>
+                        TAX<span style="color: #cc0000">C</span>ALCULATOR
+                    </a>
+                </span>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="@Url.Action("Index", "Home")">
+                            <i class="fa fa-home fa-lg"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Calculator")">
+                            <i class="fa fa-calculator fa-lg"></i>
+                            Calculator
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "TaxRate")">
+                            <i class="fa fa-cog fa-lg"></i>
+                            Tax Rate
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="content-container">
+        <div class="container body-content">
+            @Html.Partial("_MessagePanel")
+            <div id="alertDiv" class="alert alert-danger margin-top-5" style="display: none;">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <span id="alertText">test</span>
+            </div>
+            @if (!string.IsNullOrEmpty(ViewBag.Title))
+            {
+                <h1>@ViewBag.Title</h1>
+            }
+
+            <div class="margin-top-25">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <i class="fa fa-coffee fa-lg"></i>
+            <p>
+                Fork this project in <a href="https://github.com/stephenzeng/StephenZeng.TaxCalculator"><i class="fa fa-github"></i> GitHub</a>
+                <br>
+                Contact me at zeng.stephen@gmail.com
+                <br />
+                <span class="fa fa-copyright"> @DateTime.Now.Year</span>
+            </p>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
