@@ -51,7 +51,7 @@ namespace TaxCalculator.Web
         {
             SqlConnection.ClearAllPools();
             var context = new TaxCalculatorContext();
-            Database.SetInitializer(new TaxCalculatorInitializer());
+            //Database.SetInitializer(new TaxCalculatorInitializer());
             context.Database.Initialize(true);
         }
 
