@@ -10,7 +10,7 @@ namespace TaxCalculator.Dal
         {
         }
 
-        public DbSet<TaxRate> TaxRates { get; set; }
+        public virtual DbSet<TaxRate> TaxRates { get; set; }
         public DbSet<TaxRateItem> TaxRateItems { get; set; }
         public DbSet<TaxThreshold> TaxThresholds { get; set; }
 
