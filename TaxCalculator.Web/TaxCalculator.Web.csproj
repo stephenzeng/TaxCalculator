@@ -39,6 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc5.3.3.3\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.3.3.0\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
@@ -124,11 +130,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CalculatorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TaxRateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\TaxCalculateViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -181,10 +189,10 @@
     <Content Include="Views\TaxRate\Details.cshtml" />
     <Content Include="Views\TaxRate\Add.cshtml" />
     <Content Include="Views\TaxRate\Edit.cshtml" />
+    <Content Include="Views\Calculator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -201,6 +209,10 @@
     <ProjectReference Include="..\TaxCalculator.Domain\TaxCalculator.Domain.csproj">
       <Project>{11B4F6C2-F7D3-4FBE-B59C-C5D806CB5901}</Project>
       <Name>TaxCalculator.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaxCalculator.Service\TaxCalculator.Service.csproj">
+      <Project>{4D21EBB5-E26E-405A-A541-FA8B1C6AC2AD}</Project>
+      <Name>TaxCalculator.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

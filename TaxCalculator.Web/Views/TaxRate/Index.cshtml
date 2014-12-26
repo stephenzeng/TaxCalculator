@@ -1,7 +1,42 @@
-﻿
+﻿@model IEnumerable<TaxCalculator.Domain.TaxRate>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tax Rates";
 }
 
-<h2>Index</h2>
-
+<div class="panel panel-default margin-top-5">
+    <div class="panel-heading">
+        <span class="fa fa-tags"></span>
+        @ViewBag.Title
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Year</th>
+                    <th>Description</th>
+                    <th>Create time</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var taxRate in Model)
+                    {
+                        <tr>
+                            <td style="width: 100px;">
+                                <a href="@Url.Action("Details", "TaxRate", new {taxRate.Id}, null)" title="View">
+                                    <span class="fa fa-file-text-o"></span> View
+                                </a>
+                            </td>
+                            <td>@taxRate.Year</td>
+                            <td>@taxRate.Description</td>
+                            <td>@Html.DisplayFor(m => taxRate.CreateAt)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

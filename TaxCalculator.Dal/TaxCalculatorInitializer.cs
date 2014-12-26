@@ -6,7 +6,7 @@ using TaxCalculator.Domain;
 
 namespace TaxCalculator.Dal
 {
-    public class TaxCalculatorInitializer : DropCreateDatabaseIfModelChanges<TaxCalculatorContext>
+    public class TaxCalculatorInitializer : DropCreateDatabaseAlways<TaxCalculatorContext>
     {
         protected override void Seed(TaxCalculatorContext context)
         {
@@ -27,6 +27,8 @@ namespace TaxCalculator.Dal
                 new TaxThreshold {Id = 6, Start = 0m, Rate = 0m},
                 new TaxThreshold {Id = 7, Start = 20542m, Rate = 0.1m},
                 new TaxThreshold {Id = 8, Start = 24167m, Rate = 0.02m},
+                new TaxThreshold {Id = 9, Start = 0m, End = 180000m, Rate = 0m},
+                new TaxThreshold {Id = 10, Start = 180000m, Rate = 0.02m},
             };
 
             taxThresholds.ForEach(t => context.TaxThresholds.Add(t));
@@ -59,6 +61,15 @@ namespace TaxCalculator.Dal
                         context.TaxThresholds.Find(6),
                         context.TaxThresholds.Find(7),
                         context.TaxThresholds.Find(8),
+                    },
+                },
+                new TaxRateItem
+                {
+                    Description = "Budget repair levy rates",
+                    Thresholds = new List<TaxThreshold>
+                    {
+                        context.TaxThresholds.Find(9),
+                        context.TaxThresholds.Find(10),
                     },
                 },
             };

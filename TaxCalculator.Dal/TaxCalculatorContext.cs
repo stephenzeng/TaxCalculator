@@ -4,7 +4,7 @@ using TaxCalculator.Domain;
 
 namespace TaxCalculator.Dal
 {
-    public class TaxCalculatorContext : DbContext, ITaxCalculatorContext
+    public class TaxCalculatorContext : DbContext
     {
         public TaxCalculatorContext() : base("TaxCalculatorContext")
         {

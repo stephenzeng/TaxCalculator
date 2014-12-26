@@ -5,21 +5,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Mvc;
-using AutoMapper;
 using TaxCalculator.Domain;
 
 namespace TaxCalculator.Web.Controllers
 {
     public class TaxRateController : BaseController
     {
-        public TaxRateController()
-        {
-            Mapper.CreateMap<TaxRate, TaxRate>()
-                .ForMember(s => s.Description, o => o.MapFrom(c => string.Format("Copy - {0}", c.Description)))
-                .ForMember(s => s.Id, o => o.Ignore())
-                .ForMember(s => s.CreateAt, o => o.MapFrom(c => DateTime.Now));
-        }
-
         public ActionResult Index()
         {
             var list = TaxCalculatorContext.TaxRates
@@ -29,8 +20,11 @@ namespace TaxCalculator.Web.Controllers
             return View(list);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             var taxRate = TaxCalculatorContext.TaxRates.Find(id);
 
             if (taxRate == null)
